@@ -4,36 +4,8 @@
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-    <option name="myAllFileTypesSelected" value="false" />
-    <option name="mySelectedFileTypes">
-      <set>
-        <option value="CMakeLists.txt" />
-        <option value="Dart" />
-        <option value="EditorConfig" />
-        <option value="Groovy" />
-        <option value="HTML" />
-        <option value="JAVA" />
-        <option value="JSON" />
-        <option value="Markdown" />
-        <option value="ObjectiveC" />
-        <option value="PowerShell" />
-        <option value="Properties" />
-        <option value="RNG Compact" />
-        <option value="Shell Script" />
-        <option value="TOML" />
-        <option value="XHTML" />
-        <option value="XML" />
-        <option value="YAML" />
-      </set>
-    </option>
-  </component>
   <component name="KtLint plugin">
     <ktlintMode>MANUAL</ktlintMode>
-  </component>
-  <component name="OptimizeOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
