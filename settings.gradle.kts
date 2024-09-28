@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "My Sample Code"
 include(":app")
+include(":locationtracking")
