@@ -22,3 +22,6 @@ dependencyResolutionManagement {
 rootProject.name = "My Sample Code"
 include(":app")
 include(":locationtracking")
+include(":mvvm")
+include(":roomsample")
+include(":datastoresample")
