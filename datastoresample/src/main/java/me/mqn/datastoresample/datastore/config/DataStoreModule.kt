@@ -1,6 +1,9 @@
 package me.mqn.datastoresample.datastore.config
 
 import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +17,11 @@ import me.mqn.datastoresample.datastore.jwt.JwtTokenManager
 @InstallIn(SingletonComponent::class)
 object DataStoreModule {
 
+	private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "my_datastore_name")
+
 	@[Provides Singleton]
-	fun provideJwtTokenManager(@ApplicationContext context: Context): JwtTokenManager = JwtTokenDataStore(context)
+	fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> = context.dataStore
+
+	@[Provides Singleton]
+	fun provideJwtTokenManager(dataStore: DataStore<Preferences>): JwtTokenManager = JwtTokenDataStore(dataStore)
 }

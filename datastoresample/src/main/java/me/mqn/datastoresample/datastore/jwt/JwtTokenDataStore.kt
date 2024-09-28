@@ -1,14 +1,15 @@
 package me.mqn.datastoresample.datastore.jwt
 
-import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 import me.mqn.datastoresample.datastore.config.DataStoreAPI
 
 class JwtTokenDataStore @Inject constructor(
-	@ApplicationContext context: Context
-) : JwtTokenManager, DataStoreAPI(context) {
+	dataSource: DataStore<Preferences>
+) : JwtTokenManager, DataStoreAPI(dataSource) {
 
 	companion object {
 
@@ -16,21 +17,14 @@ class JwtTokenDataStore @Inject constructor(
 		private val REFRESH_JWT_KEY = stringPreferencesKey("refresh_jwt")
 	}
 
-	override suspend fun saveAccessJwt(token: String) {
-		putPreferenceValue(key = ACCESS_JWT_KEY, value = token)
-	}
+	override suspend fun saveAccessJwt(token: String): Boolean = putPreferenceValue(key = ACCESS_JWT_KEY, value = token)
+	override suspend fun saveRefreshJwt(token: String): Boolean = putPreferenceValue(key = REFRESH_JWT_KEY, value = token)
 
-	override suspend fun saveRefreshJwt(token: String) {
-		putPreferenceValue(key = REFRESH_JWT_KEY, value = token)
-	}
+	override suspend fun getAccessJwt(): String = getPreferenceValue(key = ACCESS_JWT_KEY, defaultValue = "")
+	override suspend fun getRefreshJwt(): String = getPreferenceValue(key = REFRESH_JWT_KEY, defaultValue = "")
 
-	override suspend fun getAccessJwt(): String {
-		return getPreferenceValue(key = ACCESS_JWT_KEY, defaultValue = "")
-	}
-
-	override suspend fun getRefreshJwt(): String {
-		return getPreferenceValue(key = REFRESH_JWT_KEY, defaultValue = "")
-	}
+	override suspend fun getAccessJwtFlow(): Flow<String?> = getPreferenceFlow(key = ACCESS_JWT_KEY, defaultValue = "")
+	override suspend fun getRefreshJwtFlow(): Flow<String?> = getPreferenceFlow(key = REFRESH_JWT_KEY, defaultValue = "")
 
 	override suspend fun clearAllTokens() {
 		removePreference(key = ACCESS_JWT_KEY)
