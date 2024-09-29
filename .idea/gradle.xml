@@ -10,9 +10,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/codepad" />
             <option value="$PROJECT_DIR$/datastoresample" />
             <option value="$PROJECT_DIR$/locationtracking" />
             <option value="$PROJECT_DIR$/mvvm" />
+            <option value="$PROJECT_DIR$/mvvm2" />
             <option value="$PROJECT_DIR$/roomsample" />
           </set>
         </option>

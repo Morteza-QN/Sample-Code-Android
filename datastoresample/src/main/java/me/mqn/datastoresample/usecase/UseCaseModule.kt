@@ -12,6 +12,7 @@ import me.mqn.datastoresample.usecase.callback.NoParameterUseCaseCallback
 @InstallIn(SingletonComponent::class)
 abstract class UseCaseModule {
 
+	// FIXME: have error binding here change to provide
 	@[Binds Singleton]
 	abstract fun bindGetTokenUseCase(impl: GetTokenUseCase): NoParameterUseCaseCallback<Flow<String?>>
 }
